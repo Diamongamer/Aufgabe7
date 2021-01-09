@@ -6,11 +6,12 @@ public abstract class AbstractReadableMap<K, V> implements ReadableMap{
     }
 
     @Override
-    public V getOrThrow(K key) throws UnknownKeyException{
-        for(Entry entry:entries) {
+    public Object getOrThrow(Object key) throws UnknownKeyException {
+        for (Entry entry : entries) {
             if (!key.equals(null)) {
                 return entry.getValue();
             }
         }
+        throw new UnknownKeyException("Key not found");
     }
 }
